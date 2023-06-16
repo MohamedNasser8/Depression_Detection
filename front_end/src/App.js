@@ -10,7 +10,7 @@ function App() {
     <Header/>
     <div className='search-bar-container'>
     
-    <SearchBar/>
+      <SearchBar/>
 
     </div>
     <Footer/>

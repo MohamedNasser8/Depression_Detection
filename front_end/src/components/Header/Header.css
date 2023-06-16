@@ -1,33 +1,28 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway);
-
-.header-btn{
-	border:none;
-	color: #341f54;
-	background-color:transparent;
-}
-
- .top-nav{
+.top-nav{
 	font-family: "Raleway";
 	box-sizing: border-box;
 	display: flex;
 	position: fixed;
 	top: 0;
+	
 	width: 100%;
 	z-index: 2;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	padding: 1rem 3rem;
+	padding-left: 0.5rem;
 	color: #341f54;
-	background-color:#fff;
+	background-color:#1E90FF;
 	box-shadow:5px 5px 5px rgba(0,0,0,0.2);
 }
 
 
 .top-nav .logo {
-    width: 5rem;
+    width: 6rem;
 }
- .menu {
+
+.menu {
 	display: flex;
 	flex-direction: row;
 	list-style-type: none;
@@ -35,8 +30,9 @@
 	padding: 0;
 }
 
+
 .menu li {
-	margin-right: 5rem;
+	margin-right: 2rem;
 }
  .menu > li a {
 	text-decoration: none;
@@ -46,7 +42,7 @@
 }
 
 .menu > li a:hover {
-	text-decoration: underline;
+	color:#FFD700;
 }
 
  .menu-button-container {
