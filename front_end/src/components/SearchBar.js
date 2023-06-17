@@ -19,9 +19,11 @@ export const SearchBar = ({ setResults }) => {
       let score=0;
       let Data=response.data;
       Data=Data.split('');
+      let len=0;
       for(let i=0;i<Data.length;i++){
         if(Data[i]=='n'&& Data[i+1]=='o')
         {
+          len++;
           let num="";
           let cnt=0;
           for(let j=i+9;j<Data.length;j++){
@@ -35,11 +37,11 @@ export const SearchBar = ({ setResults }) => {
           score+=1-parseInt(num);
         }
       }
-
-
-      score=score/Data.length;
+      console.log('score');
+      console.log(score);
+      score=score/len;
       if(score<0.4){
-        setStatus("You are Happy")
+        setStatus(" is Happy")
       }
       else if(score<0.7){
       setStatus("You are likely to be depressed")
