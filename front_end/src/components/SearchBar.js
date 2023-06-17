@@ -25,7 +25,7 @@ export const SearchBar = ({ setResults }) => {
           let num="";
           let cnt=0;
           for(let j=i+9;j<Data.length;j++){
-            if(Data[j]=='0'){
+            if(Data[j]=='0'||cnt>0){
               num+=Data[j];
               cnt++;
             }
