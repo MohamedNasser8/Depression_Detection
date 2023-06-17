@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import ApexChart from "../components/hexagonalChart/ApexChart";
 import sadGif from "../images/fed7c66ff997d517d9c63cf20ad4c23f.gif";
 import "./Spinner.css";
 import happyGif from '../images/200w.gif';
 import "./SearchBar.css";
 import axios from "axios";
-export const SearchBar = ({ setResults }) => {
+export const SearchBar = ({ setResults}) => {
   const [input, setInput] = useState("");
   const [status,setStatus] = useState("He is likely to be depressed")
   const [inputs,setInputs] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-
+  const [displayChart, setDisplayChart] = useState(false);
   const fetchData = () => {
     setIsLoading(true);
     axios.post('http://localhost:80/getStatsSingle',inputs).then(function (response) {
@@ -40,10 +41,10 @@ export const SearchBar = ({ setResults }) => {
       console.log('score');
       console.log(score);
       score=score/len;
-      if(score<0.15){
+      if(score<0.11){
         setStatus("He is Happy")
       }
-      else if(score<0.5){
+      else if(score<0.2){
       setStatus("He is likely to be depressed")
       }
       else{
@@ -73,7 +74,20 @@ export const SearchBar = ({ setResults }) => {
       <div className="mt-4 d-flex">
         <h4>{status}</h4>
       </div>
-      <img src={status=="He is likely to be depressed"?sadGif:happyGif} alt="my-gif" className="rounded gif d-flex justify-content-center " />
+      <img src={status=="He is Happy"?happyGif:sadGif}alt="my-gif" className="rounded gif d-flex justify-content-center " />
+      {status!="He is Happy"?
+        <button className="searchBtn mt-4" onClick={() => setDisplayChart(true)}>Display Chart</button>:
+        <></>
+      }
+      
+      {displayChart?(
+        
+          <>
+        <ApexChart/>
+        <button className="searchBtn" onClick={() => setDisplayChart(false)}>Close Chart</button>
+        </>
+      ):
+      <></>}
     </>
   );
 };
