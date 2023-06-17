@@ -21,11 +21,8 @@ $router->post("/getStatsSingle", function () {
     $_POST = json_decode(file_get_contents('php://input'));
     $_POST = convert_object_to_array($_POST);
     $link = $_POST["link"];
-    //$output = shell_exec('/c/Users/eslam/AppData/Local/Microsoft/WindowsApps/python3 test.py ' . $link);
-    $output = shell_exec("python3 test.py " . $link);
-    if (is_null($output)) {
-        echo "why";
-    }
+    $output = shell_exec("python analyze.py ".$link);
+
     echo $output;
 });
 
@@ -40,6 +37,8 @@ $router->post("/getStatsMulti", function () {
 
 
 });
+
+
 
 
 // $router->post("/upload", function () {
