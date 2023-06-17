@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from DepressionDetector import DepressionDetector
+
 from playwright.sync_api import sync_playwright
 from nested_lookup import nested_lookup
 import json
@@ -88,8 +90,12 @@ def scrape_profile(url: str) -> dict:
 
 
 if __name__ == "__main__":
-    user = "https://twitter.com/"+sys.argv[1]
+    user = sys.argv[1]
+    detector = DepressionDetector()
 
     for item in scrape_profile(user)["tweets"]:
-        print(item["legacy"]["full_text"])
+        print(detector.get_label_score(item["legacy"]["full_text"]))
+        # print(item["legacy"]["full_text"])
         print(" ")
+
+

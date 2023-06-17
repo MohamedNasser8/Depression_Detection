@@ -13,14 +13,16 @@ export default class ApexChart extends React.Component {
         }],
         options: {
           chart: {
-            height: 350,
+            height: 10,
             type: 'radar',
           },
           title: {
             text: 'Basic Radar Chart'
           },
           xaxis: {
-            categories: ['I want to die', 'I want to live', 'I hate my dad', 'I hate my mom', 'I hate both', 'what is life']
+            categories: ['Diminished ability to think or concentrate', 'Feeling low',
+            'Psychomotor agitation or retardation', 'sleep disorder',
+            'Suicidality', 'weight disorder']
           }
         },
 
@@ -35,7 +37,7 @@ export default class ApexChart extends React.Component {
 
 
   <div id="chart">
-<ReactApexChart options={this.state.options} series={this.state.series} type="radar" height={350} />
+<ReactApexChart options={this.state.options} series={this.state.series} type="radar" height={750} />
 </div>
 
 
