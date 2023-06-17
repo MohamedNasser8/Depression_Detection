@@ -10,7 +10,7 @@ class DepressionDetector:
         # initiate the model
         self.model = pipeline("text-classification", model="paulagarciaserrano/roberta-depression-detection")
         self.API_URL = "https://api-inference.huggingface.co/models/rafalposwiata/deproberta-large-depression"
-        self.headers = {"Authorization": "Bearer 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"}
+        self.headers = {"Authorization": "Bearer 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"}
 
     def query(self,payload):
         response = requests.post(self.API_URL, headers=self.headers, json=payload)
@@ -88,3 +88,8 @@ class DepressionDetector:
 #     detector = DepressionDetector()
 #     print(detector.get_label_score("اريد انهي حياتي 💔😭"))
 #     print(detector.get_label_score("I am very sad."))
+
+
+
+
+
