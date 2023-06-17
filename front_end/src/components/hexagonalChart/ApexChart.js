@@ -9,7 +9,7 @@ export default class ApexChart extends React.Component {
 
         series: [{
           name: 'Series 1',
-          data: [80, 50, 30, 40, 100, 20],
+          data: [props.da, props.fl, props.pa, props.sd, props.su, props.wd],
         }],
         options: {
           chart: {

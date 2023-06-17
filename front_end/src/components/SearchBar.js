@@ -7,6 +7,15 @@ import happyGif from '../images/200w.gif';
 import "./SearchBar.css";
 import axios from "axios";
 export const SearchBar = ({ setResults}) => {
+
+  var da="";
+  var fl="";
+  var pa="";
+  var sd="";
+  var su="";
+  var wd="";
+
+
   const [input, setInput] = useState("");
   const [status,setStatus] = useState("")
   const [inputs,setInputs] = useState({});
@@ -20,6 +29,7 @@ export const SearchBar = ({ setResults}) => {
       let score=0;
       let Data=response.data;
       Data=Data.split('');
+      // D
       let len=0;
       for(let i=0;i<Data.length;i++){
         if(Data[i]=='n'&& Data[i+1]=='o')
@@ -30,6 +40,24 @@ export const SearchBar = ({ setResults}) => {
           for(let j=i+9;j<Data.length;j++){
             if(Data[j]=='0'||cnt>0){
               num+=Data[j];
+              if(cnt<2){
+                da+=Data[j];  
+              }
+              else if(cnt<4){
+                fl+=Data[j];
+              }
+              else if(cnt<6){
+                pa+=Data[j];
+              }
+              else if(cnt<8){
+                sd+=Data[j];
+              }
+              else if(cnt<10){
+                su+=Data[j];
+              }
+              else if(cnt<12){
+                wd+=Data[j];
+              }
               cnt++;
             }
             if(cnt==12)
@@ -87,7 +115,7 @@ export const SearchBar = ({ setResults}) => {
       {displayChart?(
         
           <>
-        <ApexChart/>
+        <ApexChart da="" fl="" pa="" sd="" su="" wd=""/>
         <button className="searchBtn" onClick={() => setDisplayChart(false)}>Close Chart</button>
         </>
       ):
