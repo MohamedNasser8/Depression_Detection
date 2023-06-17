@@ -44,7 +44,7 @@ export const SearchBar = ({ setResults }) => {
           name = "link"
           onChange={handleChange}
         />
-        <button onClick={() => fetchData(input)}>Search</button>
+        <button className="searchBtn" onClick={() => fetchData(input)}>Search</button>
       </div>
       <img src={sadGif} alt="my-gif" className="rounded gif" />
     </>

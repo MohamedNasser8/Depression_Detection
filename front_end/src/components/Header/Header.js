@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Header.css"
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo.svg";
 
 function Header() {
   
