@@ -2,12 +2,12 @@ import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import sadGif from "../images/fed7c66ff997d517d9c63cf20ad4c23f.gif";
 import "./Spinner.css";
-//import happyGif from '../images/200w.gif';
+import happyGif from '../images/200w.gif';
 import "./SearchBar.css";
 import axios from "axios";
 export const SearchBar = ({ setResults }) => {
   const [input, setInput] = useState("");
-  const [status,setStatus] = useState("")
+  const [status,setStatus] = useState("He is likely to be depressed")
   const [inputs,setInputs] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
@@ -40,14 +40,14 @@ export const SearchBar = ({ setResults }) => {
       console.log('score');
       console.log(score);
       score=score/len;
-      if(score<0.4){
-        setStatus(" is Happy")
+      if(score<0.15){
+        setStatus("He is Happy")
       }
-      else if(score<0.7){
-      setStatus("You are likely to be depressed")
+      else if(score<0.5){
+      setStatus("He is likely to be depressed")
       }
       else{
-        setStatus("You are depressed")
+        setStatus("He is depressed")
       }
     });
   };
@@ -70,10 +70,10 @@ export const SearchBar = ({ setResults }) => {
         />
         <button className="searchBtn" onClick={() => fetchData(input)}>Search</button>
       </div>
-      <div>
+      <div className="mt-4 d-flex">
         <h4>{status}</h4>
       </div>
-      <img src={sadGif} alt="my-gif" className="rounded gif" />
+      <img src={status=="He is likely to be depressed"?sadGif:happyGif} alt="my-gif" className="rounded gif d-flex justify-content-center " />
     </>
   );
 };
