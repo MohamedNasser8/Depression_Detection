@@ -68,6 +68,9 @@ export const SearchBar = ({ setResults }) => {
         />
         <button className="searchBtn" onClick={() => fetchData(input)}>Search</button>
       </div>
+      <div>
+        <h4>{status}</h4>
+      </div>
       <img src={sadGif} alt="my-gif" className="rounded gif" />
     </>
   );
