@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import sadGif from "../images/fed7c66ff997d517d9c63cf20ad4c23f.gif";
+import "./Spinner.css";
 //import happyGif from '../images/200w.gif';
 import "./SearchBar.css";
 import axios from "axios";
@@ -8,20 +9,13 @@ export const SearchBar = ({ setResults }) => {
   const [input, setInput] = useState("");
   const [status,setStatus] = useState("")
   const [inputs,setInputs] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+
   const fetchData = () => {
-    // console.log(inputs)
-    // axios
-    //   .post("http://localhost:80/getStatsSingle", input)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-
-
+    setIsLoading(true);
     axios.post('http://localhost:80/getStatsSingle',inputs).then(function (response) {
       console.log(response.data);
+      setIsLoading(false);
       let score=0;
       let Data=response.data;
       for(let i=0;i<Data.length;i++){
@@ -40,10 +34,6 @@ export const SearchBar = ({ setResults }) => {
     });
   };
 
-  // const handleChange = (value) => {
-  //   setInput(value);
-  // };
-
   const handleChange = (event) => {
     const name = "link"
     const value = event.target.value;       
@@ -52,6 +42,7 @@ export const SearchBar = ({ setResults }) => {
 
   return (
     <>
+      {isLoading && <div className="spinner"></div>}
       <div className="input-wrapper">
         <FaSearch id="search-icon" />
         <input
@@ -60,9 +51,6 @@ export const SearchBar = ({ setResults }) => {
           onChange={handleChange}
         />
         <button className="searchBtn" onClick={() => fetchData(input)}>Search</button>
-      </div>
-      <div>
-        <h4>{status}</h4>
       </div>
       <img src={sadGif} alt="my-gif" className="rounded gif" />
     </>
