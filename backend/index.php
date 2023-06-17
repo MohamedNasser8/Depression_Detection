@@ -17,6 +17,10 @@ $base = "";
 
 $router = new Router($base);
 
+$router->get("/test", function () {
+    echo "I'm alive";
+});
+
 $router->post("/getStatsSingle", function () {
     $_POST = json_decode(file_get_contents('php://input'));
     $_POST = convert_object_to_array($_POST);
