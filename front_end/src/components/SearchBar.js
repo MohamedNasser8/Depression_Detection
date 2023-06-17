@@ -8,7 +8,7 @@ import "./SearchBar.css";
 import axios from "axios";
 export const SearchBar = ({ setResults}) => {
   const [input, setInput] = useState("");
-  const [status,setStatus] = useState("He is likely to be depressed")
+  const [status,setStatus] = useState("")
   const [inputs,setInputs] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [displayChart, setDisplayChart] = useState(false);
@@ -74,8 +74,12 @@ export const SearchBar = ({ setResults}) => {
       <div className="mt-4 d-flex">
         <h4>{status}</h4>
       </div>
-      <img src={status=="He is Happy"?happyGif:sadGif}alt="my-gif" className="rounded gif d-flex justify-content-center " />
-      {status!="He is Happy"?
+
+      {
+        status !=""?
+        <img src={status=="He is Happy"?happyGif:sadGif}alt="my-gif" className="rounded gif d-flex justify-content-center " />:<></>
+      }
+      {status=="He is depressed"||status=="He is likely to be depressed"?
         <button className="searchBtn mt-4" onClick={() => setDisplayChart(true)}>Display Chart</button>:
         <></>
       }
