@@ -34,7 +34,7 @@ export const SearchBar = ({ setResults }) => {
             if(cnt==12)
             break;
           }
-          score+=1-parseInt(num);
+          score+=1-parseFloat(num);
         }
       }
       console.log('score');
