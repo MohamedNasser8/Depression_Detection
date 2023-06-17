@@ -23,10 +23,11 @@ export const SearchBar = ({ setResults }) => {
     axios.post('http://localhost:80/getStatsSingle',inputs).then(function (response) {
       console.log(response.data);
       let score=0;
-      response.data?.map((item)=>{
-        score+=1-item[0][0]['score'];
-      })
-      score=score/response.data.length;
+      let Data=response.data;
+      for(let i=0;i<Data.length;i++){
+        score=score+Data[i][0][0]['score'].score;
+      }
+      score=score/Data.length;
       if(score<0.4){
         setStatus("You are Happy")
       }
