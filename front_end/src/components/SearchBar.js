@@ -6,6 +6,7 @@ import "./SearchBar.css";
 import axios from "axios";
 export const SearchBar = ({ setResults }) => {
   const [input, setInput] = useState("");
+  const [status,setStatus] = useState("")
   const [inputs,setInputs] = useState({});
   const fetchData = () => {
     // console.log(inputs)
@@ -19,9 +20,22 @@ export const SearchBar = ({ setResults }) => {
     //   });
 
 
-
     axios.post('http://localhost:80/getStatsSingle',inputs).then(function (response) {
       console.log(response.data);
+      let score=0;
+      response.data?.map((item)=>{
+        score+=1-item[0][0]['score'];
+      })
+      score=score/response.data.length;
+      if(score<0.4){
+        setStatus("You are Happy")
+      }
+      else if(score<0.7){
+      setStatus("You are likely to be depressed")
+      }
+      else{
+        setStatus("You are depressed")
+      }
     });
   };
 
@@ -45,6 +59,9 @@ export const SearchBar = ({ setResults }) => {
           onChange={handleChange}
         />
         <button className="searchBtn" onClick={() => fetchData(input)}>Search</button>
+      </div>
+      <div>
+        <h4>{status}</h4>
       </div>
       <img src={sadGif} alt="my-gif" className="rounded gif" />
     </>
